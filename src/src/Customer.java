@@ -3,6 +3,11 @@ public class Customer {
     Long id;
     Integer tier;
 
+    public Customer(Long id, Integer tier, String name) {
+        this.id = id;
+        this.tier = tier;
+        this.name = name;
+    }
 
     public String getName() {
         return name;

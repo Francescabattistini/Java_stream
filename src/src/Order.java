@@ -8,6 +8,9 @@ public class Order {
     List<Product> products;
     Customer customer;
 
+
+
+
     public Long getId() {
         return id;
     }
@@ -48,5 +51,16 @@ public class Order {
         this.customer = customer;
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", orderDate=" + orderDate +
+                ", products=" + products +
+                ", customer=" + customer +
+                '}';
     }
 }

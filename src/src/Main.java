@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -25,24 +26,34 @@ public class Main {
 
         System.out.println("--------------Es2------------------");
 
-
+        List<Order> ordini = new ArrayList<>();
         List<Product> babies = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
-            Product baby = new Product();
-            baby.setId(Long.valueOf(i));
-            baby.setCategory("babies");
-            baby.setName("baby "+i);
-            Double numeroNonArrotondato = rand.nextDouble(90, 150);
-            Double numeroArrotondato =(double) Math.round(numeroNonArrotondato);
-            baby.setPrice(numeroArrotondato);
-            babies.add(baby);
+        for (int j = 0; j < 10; j++) {
+            Order order = new Order();
+                    order.setStatus("buy");
+                    order.setId(Long.valueOf(j));
+                    order.setCustomer(new Customer((long)(1000+j), 2 , "giacomo"));
+                    order.setProducts(babies);
+                    order.setOrderDate(LocalDate.now());
+
+
+            for (int i = 0; i < 10; i++) {
+                Product baby = new Product();
+                baby.setId(Long.valueOf(i));
+                baby.setCategory("babies");
+                baby.setName("baby "+i);
+                Double numeroNonArrotondato = rand.nextDouble(90, 150);
+                Double numeroArrotondato =(double) Math.round(numeroNonArrotondato);
+                baby.setPrice(numeroArrotondato);
+                babies.add(baby);
+            }
+            ordini.add(order);
         }
-        System.out.println("Lista libri baby:");
-        babies.stream().forEach(baby-> System.out.println(baby));
-        System.out.println("Lista libri costosi baby:");
-        List<Product> libriCostosibaby = babies.stream().filter(baby -> baby.getPrice() > 100).toList();
-        libriCostosibaby.stream().forEach(baby-> System.out.println(baby));
+
+        System.out.println("Lista di ordini e prodotti baby:");
+       ordini.stream().forEach(ordine-> System.out.println(ordine));
+
 
 
         System.out.println("--------------Es3------------------");
